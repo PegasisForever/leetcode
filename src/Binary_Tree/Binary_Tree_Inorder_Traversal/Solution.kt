@@ -1,4 +1,4 @@
-package Binary_Tree_Postorder_Traversal
+package Binary_Tree.Binary_Tree_Inorder_Traversal
 
 import java.util.*
 
@@ -8,7 +8,7 @@ class TreeNode(var `val`: Int) {
 }
 
 class Solution {
-    fun postorderTraversal(root: TreeNode?): List<Int> {
+    fun inorderTraversal(root: TreeNode?): List<Int> {
         step(root)
         return list
     }
@@ -19,7 +19,7 @@ class Solution {
         root ?: return
 
         step(root.left)
-        step(root.right)
         list += root.`val`
+        step(root.right)
     }
 }

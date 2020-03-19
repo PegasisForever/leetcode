@@ -1,4 +1,4 @@
-package Symmetric_Tree
+package Binary_Tree.Symmetric_Tree
 
 import kotlin.math.max
 

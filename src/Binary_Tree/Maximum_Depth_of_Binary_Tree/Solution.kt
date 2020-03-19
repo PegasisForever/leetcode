@@ -1,4 +1,4 @@
-package Maximum_Depth_of_Binary_Tree
+package Binary_Tree.Maximum_Depth_of_Binary_Tree
 
 import kotlin.math.max
 

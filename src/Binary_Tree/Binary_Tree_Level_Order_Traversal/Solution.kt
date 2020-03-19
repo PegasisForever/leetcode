@@ -1,4 +1,4 @@
-package Binary_Tree_Level_Order_Traversal
+package Binary_Tree.Binary_Tree_Level_Order_Traversal
 
 import java.util.*
 

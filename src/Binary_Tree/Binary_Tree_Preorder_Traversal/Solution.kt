@@ -1,4 +1,4 @@
-package Binary_Tree_Preorder_Traversal
+package Binary_Tree.Binary_Tree_Preorder_Traversal
 
 import java.util.*
 
