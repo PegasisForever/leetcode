@@ -7,7 +7,7 @@ class TreeNode(var `val`: Int) {
     var right: TreeNode? = null
 }
 
-
+//https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/535/
 class Solution {
     fun maxDepth(root: TreeNode?): Int {
         root ?: return 0

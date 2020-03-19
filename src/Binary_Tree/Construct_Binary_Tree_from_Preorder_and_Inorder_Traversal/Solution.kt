@@ -5,6 +5,7 @@ class TreeNode(var `val`: Int) {
     var right: TreeNode? = null
 }
 
+//https://leetcode.com/explore/learn/card/data-structure-tree/133/conclusion/943/
 class Solution {
     fun buildTree(preorder: IntArray, inorder: IntArray): TreeNode? {
         if (inorder.isEmpty()) return null

@@ -7,6 +7,7 @@ class TreeNode(var `val`: Int) {
     var right: TreeNode? = null
 }
 
+//https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/536/
 fun main() {
     val root = TreeNode(5).apply {
         left = TreeNode(4).apply {

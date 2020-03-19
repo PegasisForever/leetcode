@@ -7,6 +7,7 @@ class TreeNode(var `val`: Int) {
     var right: TreeNode? = null
 }
 
+//https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/929/
 class Solution {
     fun inorderTraversal(root: TreeNode?): List<Int> {
         step(root)

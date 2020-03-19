@@ -10,7 +10,7 @@ class TreeNode {
     }
 }
 
-
+//https://leetcode.com/explore/learn/card/data-structure-tree/133/conclusion/995/
 public class Codec {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);

@@ -21,8 +21,9 @@ class Node {
         right = _right;
         next = _next;
     }
-};
+}
 
+//https://leetcode.com/explore/learn/card/data-structure-tree/133/conclusion/1016/
 public class Solution {
     public Node connect(Node root) {
         step(root, 0);

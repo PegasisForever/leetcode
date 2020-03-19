@@ -13,6 +13,7 @@ class TreeNode {
 }
 
 //Timeout
+//https://leetcode.com/explore/learn/card/data-structure-tree/133/conclusion/932/
 public class Solution2 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         this.p = p;
@@ -23,9 +24,9 @@ public class Solution2 {
 
         int maxLevel = Math.min(pPath.length, qPath.length) - 1;
         for (int level = 0; level <= maxLevel; level++) {
-            if (pPath[level] != qPath[level]) return (TreeNode)pPath[level - 1];
+            if (pPath[level] != qPath[level]) return (TreeNode) pPath[level - 1];
         }
-        return (TreeNode)pPath[maxLevel];
+        return (TreeNode) pPath[maxLevel];
     }
 
     TreeNode p;

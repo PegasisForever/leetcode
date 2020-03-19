@@ -5,6 +5,7 @@ class TreeNode(var `val`: Int) {
     var right: TreeNode? = null
 }
 
+//https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/538/
 class Solution {
     fun countUnivalSubtrees(root: TreeNode?): Int {
         isUnival(root)
