@@ -43,3 +43,19 @@ inline fun count(base: Int, action: (ArrayList<Int>) -> Unit) {
 inline fun countUnique(digit: Int, base: Int, action: (IntArray) -> Unit) {
 
 }
+
+fun primeList(max: Int): ArrayList<Int> {
+    val notPrime = hashSetOf<Int>()
+    for (num in 2..max) {
+        if (num in notPrime) continue
+        for (i in (num * 2)..max step num) {
+            notPrime.add(i)
+        }
+    }
+
+    val prime = arrayListOf<Int>()
+    for (num in 2..max) {
+        if (num !in notPrime) prime.add(num)
+    }
+    return prime
+}
