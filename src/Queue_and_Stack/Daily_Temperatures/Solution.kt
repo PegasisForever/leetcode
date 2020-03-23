@@ -1,12 +1,33 @@
 package Queue_and_Stack.Daily_Temperatures
 
+import java.util.*
+
 fun main() {
     with(Solution()) {
+        println(dailyTemperatures(intArrayOf(73, 74, 75, 71, 69, 72, 76, 73)).joinToString())
+    }
+}
+
+//https://leetcode.com/explore/learn/card/queue-stack/230/usage-stack/1363/
+class Solution {
+    fun dailyTemperatures(temps: IntArray): IntArray {
+        val stack = Stack<Int>()
+        val result = IntArray(temps.size)
+        for (i in temps.lastIndex downTo 0) {
+            val temp = temps[i]
+            while (stack.isNotEmpty() && temps[stack.peek()] <= temp) stack.pop()
+            if (stack.isNotEmpty()) {
+                val lastWarmIndex = stack.peek()
+                result[i] = lastWarmIndex - i
+            }
+            stack.push(i)
+        }
+        return result
     }
 }
 
 //timeout
-class Solution {
+class Solution2 {
     data class Temperature(val day: Int, val value: Int)
 
     fun dailyTemperatures(temps: IntArray): IntArray {
@@ -29,7 +50,7 @@ class Solution {
 }
 
 //timeout
-class Solution2 {
+class Solution3 {
     data class Temperature(val day: Int, val value: Int)
 
     fun dailyTemperatures(temps: IntArray): IntArray {
