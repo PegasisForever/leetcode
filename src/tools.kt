@@ -59,3 +59,35 @@ fun primeList(max: Int): ArrayList<Int> {
     }
     return prime
 }
+
+class RollingHasher(initString: String) {
+    var hash = 0
+    private var bToN = 1
+
+    init {
+        val windowSize = initString.length
+        repeat(windowSize) {
+            bToN *= 31
+        }
+        initString.forEach { char ->
+            hash = 31 * hash + char.hashCode()
+        }
+    }
+
+    fun update(outChar: Char, inChar: Char): Int {
+        hash = 31 * hash + inChar.hashCode() - bToN * outChar.hashCode()
+        return hash
+    }
+}
+
+fun reverse(array: CharArray, start: Int, end: Int) {
+    var i = start
+    var j = end
+    repeat((j - i + 1) / 2) {
+        val temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+        i++
+        j--
+    }
+}
