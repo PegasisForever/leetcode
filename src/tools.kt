@@ -91,3 +91,11 @@ fun reverse(array: CharArray, start: Int, end: Int) {
         j--
     }
 }
+
+val charHashMap = IntArray(26).apply {
+    var sum = 1
+    repeat(26) { i ->
+        sum *= 31
+        this[i] = sum
+    }
+}
