@@ -10,7 +10,7 @@ class Solution {
             while (sortedI != 0) {
                 if (sortedNum[sortedI - 1] == sortedNum[sortedI]) {
                     sortedI--
-                }else{
+                } else {
                     break
                 }
             }
