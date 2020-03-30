@@ -1,16 +1,22 @@
-package Binary_Search_Tree.Kth_Largest_Element_in_a_Stream
-
 import java.util.*
 
-//https://leetcode.com/explore/learn/card/introduction-to-data-structure-binary-search-tree/142/conclusion/1018/
-class KthLargest(val k: Int, nums: IntArray) {
-    val tree = BinarySearchTree<Int>().apply {
-        addAll(nums.asList())
-    }
+class TreeNode(var `val`: Int) {
+    var left: TreeNode? = null
+    var right: TreeNode? = null
+}
+typealias LeetNode = TreeNode
 
-    fun add(value: Int): Int {
-        tree.add(value)
-        return tree[tree.size - k]
+fun LeetNode.toNode(): Node<Int> {
+    return Node(`val`).apply {
+        left = this@toNode.left?.toNode()
+        right = this@toNode.right?.toNode()
+    }
+}
+
+fun Node<Int>.toLeetNode(): LeetNode {
+    return TreeNode(value).apply {
+        left = this@toLeetNode.left?.toLeetNode()
+        right = this@toLeetNode.right?.toLeetNode()
     }
 }
 
