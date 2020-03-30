@@ -1,7 +1,7 @@
 package Weekly_Contest_182.Design_Underground_System
 
 //https://leetcode.com/contest/weekly-contest-182/problems/design-underground-system/
-class UndergroundSystem {
+class UndergroundSystem2 {
     val hashMap = hashMapOf<Pair<String, String>, TimeState>()
     val riders = hashMapOf<Int, RiderState>()
 
