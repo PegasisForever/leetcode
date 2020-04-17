@@ -1,5 +1,6 @@
 package Weekly_Contest_30.b
 
+//https://leetcode.com/contest/leetcode-weekly-contest-30/problems/subarray-sum-equals-k/
 class Solution {
     fun subarraySum(nums: IntArray, k: Int): Int {
         //sum,times
