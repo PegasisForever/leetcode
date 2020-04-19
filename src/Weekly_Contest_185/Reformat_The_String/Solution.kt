@@ -1,4 +1,4 @@
-package Weekly_Contest_185.a
+package Weekly_Contest_185.Reformat_The_String
 
 import kotlin.math.abs
 
