@@ -1,4 +1,5 @@
 import kotlin.math.pow
+import kotlin.math.sqrt
 
 inline fun count(digit: Int, base: Int, action: (IntArray) -> Unit) {
     val nums = IntArray(digit) { 0 }
@@ -123,4 +124,35 @@ infix fun BooleanArray.and(other: BooleanArray): BooleanArray {
         (this.getOrNull(i + thisOffset) ?: false) &&
                 (other.getOrNull(i + otherOffset) ?: false)
     }
+}
+
+fun IntArray.circleGet(i: Int): Int {
+    var index = if (i >= 0) {
+        i % size
+    } else {
+        size + (i % size)
+    }
+    if (index == size) index = 0
+    return get(index)
+}
+
+fun primeFactors(n: Int): List<Int> {
+    val result = arrayListOf<Int>()
+    var n = n
+    while (n % 2 == 0) {
+        result += 2
+        n /= 2
+    }
+
+    var i = 3
+    while (i <= sqrt(n.toDouble())) {
+        while (n % i == 0) {
+            result += i
+            n /= i
+        }
+        i += 2
+    }
+
+    if (n > 2) result += n
+    return result
 }
