@@ -1,20 +1,8 @@
-package General.LRU_Cache
+package General.First_Unique_Number
 
-fun main() {
-    val solution = LRUCache(2)
-    solution.put(1, 1)
-    solution.put(2, 2)
-    solution.get(1)
-    solution.put(3, 3)
-    solution.get(2)
-    solution.put(4, 4)
-    solution.get(1)
-    solution.get(3)
-    solution.get(4)
-}
 
-//https://leetcode.com/explore/featured/card/30-day-leetcoding-challenge/531/week-4/3309/
-class LRUCache(val capacity: Int) {
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/531/week-4/3313/
+class FirstUnique(nums: IntArray) {
     private inner class Node(var value: Int) {
         var inList = false
         var prev: Node? = null
@@ -57,6 +45,23 @@ class LRUCache(val capacity: Int) {
                 head = this
             }
         }
+
+        fun remove() {
+            if (size == 1) {
+                head = null
+                tail = null
+            } else if (prev == null) {
+                head = this.next
+                head?.prev = null
+            } else if (next == null) {
+                removeTailNode(false)
+            } else {
+                prev!!.next = next
+                next!!.prev = prev
+            }
+            inList = false
+            size--
+        }
     }
 
     private fun removeTailNode(shrinkSize: Boolean = true) {
@@ -81,28 +86,23 @@ class LRUCache(val capacity: Int) {
 
     private val map = HashMap<Int, Node>()
 
-    fun get(key: Int): Int {
-        val node = map[key]
-        return if (node?.inList == true) {
-            node.moveToListHead()
-            node.value
-        } else {
-            -1
-        }
+    init {
+        nums.forEach { add(it) }
     }
 
-    fun put(key: Int, value: Int) {
-        if (map[key]?.inList == true) {
-            val node = map[key]!!
-            node.value = value
-            node.moveToListHead()
-        } else {
+    fun showFirstUnique(): Int {
+        return tail?.value ?: -1
+    }
+
+    fun add(value: Int) {
+        if (map[value]?.inList == true) {
+            val node = map[value]!!
+            node.remove()
+            node.inList = false
+        } else if (value !in map) {
             val node = Node(value)
-            map[key] = node
+            map[value] = node
             node.insertToListHead()
-            if (size > capacity) {
-                removeTailNode()
-            }
         }
     }
 }
