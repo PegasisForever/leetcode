@@ -156,3 +156,11 @@ fun primeFactors(n: Int): List<Int> {
     if (n > 2) result += n
     return result
 }
+
+fun String.toMap(): HashMap<Char, Int> {
+    val map = hashMapOf<Char, Int>()
+    forEach { char ->
+        map[char] = (map[char] ?: 0) + 1
+    }
+    return map
+}
