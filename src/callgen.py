@@ -11,4 +11,5 @@ for i in range(1, len(calls)):
 
 p = Popen(['xsel', '-bi'], stdin=PIPE)
 p.communicate(input=outPut.encode())
+print(outPut)
 print("Copied to clipboard.")

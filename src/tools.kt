@@ -164,3 +164,45 @@ fun String.toMap(): HashMap<Char, Int> {
     }
     return map
 }
+
+fun IntArray.toCountMap(): Map<Int, Int> {
+    val map = hashMapOf<Int, Int>()
+    forEach {
+        map[it] = (map[it] ?: 0) + 1
+    }
+    return map
+}
+
+fun IntArray.toCountList(): List<Pair<Int, Int>> {
+    val map = hashMapOf<Int, Int>()
+    forEach {
+        map[it] = (map[it] ?: 0) + 1
+    }
+    return map.toList().sortedBy { it.second }
+}
+
+fun Any?.println() = println(this)
+
+// from: include  to: include
+inline fun binaryFindFirst(from: Int, to: Int, action: (Int) -> Boolean): Int? {
+    var left = from
+    var right = to
+    var mid = 0
+    while (left < right) {
+        mid = left + (right - left) / 2
+        if (action(mid)) {
+            right = mid
+        } else {
+            left = mid + 1
+        }
+    }
+    return if (left == to) {
+        if (action(to)) {
+            to
+        } else {
+            null
+        }
+    } else {
+        left
+    }
+}
