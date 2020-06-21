@@ -208,7 +208,7 @@ inline fun binaryFindFirst(from: Int, to: Int, action: (Int) -> Boolean): Int? {
 }
 
 
-// from: include  to: include
+// from: include  to: include  getCompareResult: return is given int too large?(+1)
 inline fun binaryFindExact(from: Int, to: Int, getCompareResult: (Int) -> Int): Int? {
     var left = from
     var right = to
