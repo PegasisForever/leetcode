@@ -2,19 +2,31 @@ package Binary_Search.Binary_Search
 
 //https://leetcode.com/explore/learn/card/binary-search/138/background/1038/
 class Solution {
-    fun search(nums: IntArray, target: Int): Int {
-        var left = 0
-        var right = nums.lastIndex
-        var mid = (left + right) / 2
-        while (nums[mid] != target) {
-            if (nums[mid] > target) {
-                right = mid - 1
-            } else {
-                left = mid + 1
+    // from: include  to: include
+    inline fun binaryFindExact(
+        from: Int,
+        to: Int,
+        getCompareResult: (Int) -> Int
+    ): Int? {
+        var left = from
+        var right = to
+
+        while (true) {
+            val mid = (left + right) / 2
+            val com = getCompareResult(mid)
+
+            when {
+                com == 0 -> return mid
+                com > 0 -> right = mid - 1
+                else -> left = mid + 1
             }
-            if (right < left) return -1
-            mid = (left + right) / 2
+            if (right < left) return null
         }
-        return mid
+    }
+
+    fun search(nums: IntArray, target: Int): Int {
+        return binaryFindExact(0, nums.lastIndex) {
+            nums[it] - target
+        } ?: -1
     }
 }

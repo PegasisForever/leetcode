@@ -187,7 +187,7 @@ fun Any?.println() = println(this)
 inline fun binaryFindFirst(from: Int, to: Int, action: (Int) -> Boolean): Int? {
     var left = from
     var right = to
-    var mid = 0
+    var mid: Int
     while (left < right) {
         mid = left + (right - left) / 2
         if (action(mid)) {
@@ -204,5 +204,24 @@ inline fun binaryFindFirst(from: Int, to: Int, action: (Int) -> Boolean): Int? {
         }
     } else {
         left
+    }
+}
+
+
+// from: include  to: include
+inline fun binaryFindExact(from: Int, to: Int, getCompareResult: (Int) -> Int): Int? {
+    var left = from
+    var right = to
+
+    while (true) {
+        val mid = left + (right - left) / 2
+        val com = getCompareResult(mid)
+
+        when {
+            com == 0 -> return mid
+            com > 0 -> right = mid - 1
+            else -> left = mid + 1
+        }
+        if (right < left) return null
     }
 }

@@ -1,22 +1,48 @@
 package Binary_Search.Guess_Number_Higher_or_Lower
 
+fun main() {
+    Solution().guessNumber(2126753390)
+}
+
 open class GuessGame {
-    fun guess(num: Int): Int = TODO()
+    val target = 1702766719
+    fun guess(num: Int): Int {
+        println("guess: $num")
+        return if (num > target) {
+            -1
+        } else if (num < target) {
+            1
+        } else {
+            0
+        }
+    }
+
     open fun guessNumber(n: Int): Int = TODO()
 }
 
 class Solution : GuessGame() {
-    override fun guessNumber(n: Int): Int {
-        var left = 1
-        var right = n
-        while (left <= right) {
+    // from: include  to: include
+    inline fun binaryFindExact(from: Int, to: Int, getCompareResult: (Int) -> Int): Int? {
+        var left = from
+        var right = to
+
+        while (true) {
             val mid = left + (right - left) / 2
-            when (guess(mid)) {
-                -1 -> right = mid - 1
-                1 -> left = mid + 1
-                0 -> return mid
+            val com = getCompareResult(mid)
+
+            when {
+                com == 0 -> return mid
+                com > 0 -> right = mid - 1
+                else -> left = mid + 1
             }
+            if (right < left) return null
         }
-        error("wtf")
+    }
+
+
+    override fun guessNumber(n: Int): Int {
+        return binaryFindExact(1, n) {
+            -guess(it)
+        } ?: error("wtf")
     }
 }

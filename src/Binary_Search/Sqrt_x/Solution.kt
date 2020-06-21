@@ -1,31 +1,47 @@
 package Binary_Search.Sqrt_x
 
-import kotlin.math.min
-
 fun main() {
     Solution().mySqrt(2147483647)
 }
 
 //https://leetcode.com/explore/learn/card/binary-search/125/template-i/950/
 class Solution {
-    fun mySqrt(x: Int): Int {
-        var left = 0
-        var right = min(46340, x)
-        while (left <= right) {
-            val mid = left + (right - left) / 2
-            if (mid * mid > x) {
-                right = mid - 1
-            } else if (mid * mid < x) {
-                if (mid == 46340) return mid
-                if ((mid + 1) * (mid + 1) > x) {
-                    return mid
-                } else {
-                    left = mid + 1
-                }
-            } else { // ==
-                return mid
+    // from: include  to: include
+    inline fun binaryFindExact(
+        from: Int,
+        to: Int,
+        getCompareResult: (Int) -> Int
+    ): Int? {
+        var left = from
+        var right = to
+
+        while (true) {
+            val mid = (left + right) / 2
+            val com = getCompareResult(mid)
+
+            when {
+                com == 0 -> return mid
+                com > 0 -> right = mid - 1
+                else -> left = mid + 1
             }
+            if (right < left) return null
         }
-        error("wtf")
+    }
+
+    fun mySqrt(x: Int): Int {
+        return binaryFindExact(0, minOf(46340, x)) { sqrt ->
+            val sqrt = sqrt.toLong()
+            if (sqrt * sqrt < x) {
+                if ((sqrt + 1) * (sqrt + 1) > x) {
+                    0
+                } else {
+                    -1
+                }
+            } else if (sqrt * sqrt > x) {
+                1
+            } else {
+                0
+            }
+        } ?: error("wtf")
     }
 }
