@@ -17,6 +17,7 @@ fun main() {
     })
 }
 
+// https://leetcode.com/contest/weekly-contest-209/problems/even-odd-tree/
 class Solution {
     fun isEvenOddTree(root: TreeNode?): Boolean {
         root ?: return true
