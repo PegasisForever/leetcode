@@ -225,3 +225,6 @@ inline fun binaryFindExact(from: Int, to: Int, getCompareResult: (Int) -> Int): 
         if (right < left) return null
     }
 }
+
+
+//TODO PriorityList
