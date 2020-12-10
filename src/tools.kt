@@ -226,5 +226,15 @@ inline fun binaryFindExact(from: Int, to: Int, getCompareResult: (Int) -> Int): 
     }
 }
 
+inline fun square(x: Long) = x * x
+
+// return b^p % m
+fun bigMod(b: Long, p: Long, m: Long): Long {
+    return when {
+        p == 0L -> 1
+        p % 2 == 0L -> square(bigMod(b, p / 2, m)) % m
+        else -> ((b % m) * bigMod(b, p - 1, m)) % m
+    }
+}
 
 //TODO PriorityList

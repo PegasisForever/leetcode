@@ -1,4 +1,4 @@
-package Weekly_Contest_217.b
+package Weekly_Contest_217.Find_the_Most_Competitive_Subsequence
 
 import println
 import java.util.*
