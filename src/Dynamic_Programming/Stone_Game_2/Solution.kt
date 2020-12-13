@@ -4,7 +4,7 @@ fun main() {
     Solution().stoneGameII(intArrayOf(2, 7, 9))
 }
 
-// https://leetcode.com/problems/stone-game-ii/submissions/
+// https://leetcode.com/problems/stone-game-ii/
 class Solution {
     fun stoneGameII(piles: IntArray): Int {
         cache = Array(piles.size) { Array(piles.size) { IntArray(2) { Int.MIN_VALUE } } }
