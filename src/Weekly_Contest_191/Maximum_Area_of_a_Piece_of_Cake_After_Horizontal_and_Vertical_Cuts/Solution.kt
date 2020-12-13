@@ -1,4 +1,4 @@
-package weekly_Contest_191.Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts
+package Weekly_Contest_191.Maximum_Area_of_a_Piece_of_Cake_After_Horizontal_and_Vertical_Cuts
 
 //https://leetcode.com/contest/weekly-contest-191/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts/
 class Solution {
